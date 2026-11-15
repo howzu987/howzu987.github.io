@@ -5,8 +5,8 @@
     "title": "深潛",
     "enTitle": "DEEP DIVE",
     "status": "連載中 ONGOING",
-    "tags": ["科幻 Sci-Fi", "意識上傳", "賽博龐克"],
-    "summary": "當人類的意識能夠像數據一樣被壓縮與備份，沉入深層網路的潛行者，究竟是在尋找失落的記憶，還是正在被系統同化？",
+    "tags": ["認知恐怖", "異常/詭異"],
+    "summary": "意外看見「深層」的少年，試圖存活的故事。",
     "updatedAt": "2026.11.15"
   },
   {
@@ -15,8 +15,19 @@
     "title": "無魔",
     "enTitle": "MAGICLESS",
     "status": "企劃中 PLANNING",
-    "tags": ["奇幻 Fantasy", "蒸氣機械", "懸疑"],
-    "summary": "在一個魔力逐漸枯竭的工業帝國裡，沒有魔法天賦的少年透過禁忌的機械煉金術，揭開了王室隱藏百年的能源真相。",
-    "updatedAt": "2026.11.10"
+    "tags": ["奇幻 Fantasy", "現代", "輕鬆(?)"],
+    "summary": "「你」是一個特別的存在。沒人知道「你」代表什麼。當然，我知道。",
+    "updatedAt": "2026.11.15"
+  },
+  {
+    "id": "test",
+    "code": "FILE // test",
+    "title": "測試",
+    "enTitle": "MAGICLESS",
+    "status": "測試中 TESTING",
+    "tags": ["test", "test", "test"],
+    "summary": "test",
+    "updatedAt": "test"
   }
+
 ] 

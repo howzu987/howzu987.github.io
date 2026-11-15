@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    
     const container = document.getElementById("novel-container");
     
     // 取得網址列的 id 參數（例如 novel.html?id=deep-dive）

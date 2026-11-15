@@ -498,3 +498,15 @@ body {
     border-color: var(--accent-glow);
     background-color: rgba(56, 189, 248, 0.05);
 }
+/* 讓長文字或英文能夠自動斷行、不會穿透面板 */
+.work-summary {
+    word-break: break-all;       /* 強制長單字或連續文字在邊界處斷行 */
+    overflow-wrap: break-word;   /* 確保長單字也能正確換行 */
+    white-space: normal;         /* 恢復正常的多行文字排列 */
+}
+.work-card {
+    /* 如果你原本沒有設定寬度或欄位限制，可以加上這幾行 */
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* 防止內部元素溢出卡片外 */
+}
