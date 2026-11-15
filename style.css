@@ -645,3 +645,154 @@ button.btn-enter:disabled {
         letter-spacing: 4px;
     }
 }
+
+/* =========================================
+   關於頁面 (ABOUT) 專屬樣式
+   ========================================= */
+
+.about-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* 創作者名片 */
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    flex-shrink: 0;
+    width: 84px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--accent-glow);
+    color: var(--accent-glow);
+    font-family: Georgia, serif;
+    font-size: 36px;
+    text-transform: uppercase;
+    background-color: rgba(56, 189, 248, 0.05);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
+}
+
+.profile-name {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+}
+
+.profile-alias {
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--accent-glow);
+    margin-bottom: 14px;
+}
+
+.profile-motto {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #b0b3c0;
+}
+
+/* 統計 */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 56px;
+}
+
+.stat-box {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 20px 16px;
+    text-align: center;
+}
+
+.stat-value {
+    font-family: monospace;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+.stat-label .zh {
+    font-family: "Noto Sans TC", sans-serif;
+    margin-left: 4px;
+    opacity: 0.7;
+}
+
+/* 文字區塊 */
+.about-section {
+    margin-bottom: 48px;
+}
+
+.about-section p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #b0b3c0;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+/* 聯絡資訊 */
+.info-list {
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+}
+
+.info-row {
+    display: flex;
+    gap: 24px;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row dt {
+    width: 100px;
+    flex-shrink: 0;
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--accent-glow);
+}
+
+.info-row dd {
+    color: #b0b3c0;
+}
+
+@media (max-width: 600px) {
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 20px;
+    }
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+    .info-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+}

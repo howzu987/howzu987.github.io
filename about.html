@@ -19,27 +19,74 @@
         </nav>
     </header>
 
-    <!-- 關於頁面主體 -->
-    <main class="container" style="max-width: 720px; margin: 80px auto; padding: 0 20px;">
-        <section class="markdown-body">
-            <h1>ABOUT // 關於本站</h1>
-            <p>這是一個專注於文字與故事的個人數位檔案庫，採用極簡靜態架構建置。</p>
-            
-            <h2>AUTHOR // 創作者簡介</h2>
-            <p>你可以叫我howzu，筆名還沒想</p>
-            <p>隨心落筆，創造一個屬於我的世界</p>
-            
-            <h2>CONTACT // 聯絡方式</h2>
-            <ul>
-                <li>Email：不告訴你</li>
-                <li>GitHub：不告訴你</li>
-            </ul>
-        </section>
+    <main class="container">
+        <div class="about-wrap">
+
+            <div class="page-header">
+                <div class="system-tag">PROFILE // ABOUT THIS ARCHIVE</div>
+                <h1 class="page-title">ABOUT <span class="zh-title">關於</span></h1>
+            </div>
+
+            <!-- 創作者名片 -->
+            <section class="profile-card">
+                <div class="avatar">H</div>
+                <div class="profile-info">
+                    <div class="profile-name">howzu</div>
+                    <div class="profile-alias">PEN NAME // 筆名還沒想</div>
+                    <p class="profile-motto">隨心落筆，創造一個屬於我的世界</p>
+                </div>
+            </section>
+
+            <!-- 檔案庫統計（自動從作品資料計算） -->
+            <section class="stats-row">
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-works">--</div>
+                    <div class="stat-label">WORKS <span class="zh">作品</span></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-chapters">--</div>
+                    <div class="stat-label">CHAPTERS <span class="zh">章節</span></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-updated">--</div>
+                    <div class="stat-label">LAST UPDATE <span class="zh">最近更新</span></div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2 class="section-heading">SITE <span class="zh">關於本站</span></h2>
+                <p>這是一個專注於文字與故事的個人數位檔案庫，採用極簡靜態架構建置。</p>
+                <p>每部作品都是一份獨立的「檔案」，可以從作品集進入，逐章閱讀。</p>
+            </section>
+
+            <section class="about-section">
+                <h2 class="section-heading">AUTHOR <span class="zh">創作者簡介</span></h2>
+                <p>你可以叫我 howzu，筆名還沒想。</p>
+                <p>隨心落筆，創造一個屬於我的世界。</p>
+            </section>
+
+            <section class="about-section">
+                <h2 class="section-heading">CONTACT <span class="zh">聯絡方式</span></h2>
+                <dl class="info-list">
+                    <div class="info-row">
+                        <dt>EMAIL</dt>
+                        <dd>不告訴你</dd>
+                    </div>
+                    <div class="info-row">
+                        <dt>GITHUB</dt>
+                        <dd>不告訴你</dd>
+                    </div>
+                </dl>
+            </section>
+
+        </div>
     </main>
 
     <!-- 底部極簡資訊 -->
     <footer class="footer">
         <p>© 2026 MY ARCHIVE. ALL RIGHTS RESERVED.</p>
     </footer>
+
+    <script src="about.js"></script>
 </body>
 </html>
