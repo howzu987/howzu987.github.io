@@ -1,0 +1,13 @@
+{
+  "id": "deep-dive",
+  "code": "FILE // 001",
+  "title": "深潛協議",
+  "enTitle": "DEEP DIVE",
+  "status": "連載中 ONGOING",
+  "author": "你的名字",
+  "summary": "當人類的意識能夠像數據一樣被壓縮與備份，沉入深層網路的潛行者，究竟是在尋找失落的記憶，還是正在被系統同化？",
+  "chapters": [
+    { "num": "001", "title": "第一章：意識殘片" },
+    { "num": "002", "title": "第二章：未知的連線" }
+  ]
+}

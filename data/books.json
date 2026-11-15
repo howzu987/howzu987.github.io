@@ -1,0 +1,22 @@
+[
+  {
+    "id": "deep-dive",
+    "code": "FILE // 001",
+    "title": "深潛",
+    "enTitle": "DEEP DIVE",
+    "status": "連載中 ONGOING",
+    "tags": ["科幻 Sci-Fi", "意識上傳", "賽博龐克"],
+    "summary": "當人類的意識能夠像數據一樣被壓縮與備份，沉入深層網路的潛行者，究竟是在尋找失落的記憶，還是正在被系統同化？",
+    "updatedAt": "2026.11.15"
+  },
+  {
+    "id": "magicless",
+    "code": "FILE // 002",
+    "title": "無魔",
+    "enTitle": "MAGICLESS",
+    "status": "企劃中 PLANNING",
+    "tags": ["奇幻 Fantasy", "蒸氣機械", "懸疑"],
+    "summary": "在一個魔力逐漸枯竭的工業帝國裡，沒有魔法天賦的少年透過禁忌的機械煉金術，揭開了王室隱藏百年的能源真相。",
+    "updatedAt": "2026.11.10"
+  }
+] 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>閱讀器 - MY ARCHIVE</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 Marked.js 用來將 Markdown 轉成 HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="reader-body">
+
+    <!-- 頂部極簡導覽列 -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">ARCHIVE // 00</a>
+        </div>
+        <nav class="nav-links">
+            <a id="back-to-novel" href="#">← 返回目錄 BACK TO INDEX</a>
+        </nav>
+    </header>
+
+    <!-- 文章閱讀本體區域 -->
+    <main class="reader-container">
+        <article id="chapter-content" class="markdown-body">
+            <p class="loading-text">LOADING CHAPTER DATA...</p>
+        </article>
+
+        <!-- 上一章 / 下一章切換按鈕區 -->
+        <div class="reader-nav" id="reader-nav" style="display: none;">
+            <button id="prev-btn" class="nav-btn">← PREV CHAPTER</button>
+            <button id="next-btn" class="nav-btn">NEXT CHAPTER →</button>
+        </div>
+    </main>
+
+    <!-- 底部極簡資訊 -->
+    <footer class="footer">
+        <p>© 2026 MY ARCHIVE. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="reader.js"></script>
+</body>
+</html>

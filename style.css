@@ -1,0 +1,500 @@
+/* 全站基本設定 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #08090d;
+    --surface-color: #11131a;
+    --text-main: #eeeeee;
+    --text-muted: #888b98;
+    --accent-glow: #38bdf8; /* 科技感冷藍微光 */
+    --border-color: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Noto Sans TC", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* 加入極淡的科技感網格背景 */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* 導覽列樣式 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(8, 9, 13, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.nav-brand a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 14px;
+    letter-spacing: 3px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-brand a:hover {
+    opacity: 1;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a .zh-sub {
+    font-size: 11px;
+    opacity: 0.6;
+    margin-left: 4px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-main);
+}
+
+/* 首頁主視覺區域 */
+.hero-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.system-tag {
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent-glow);
+    margin-bottom: 20px;
+    opacity: 0.85;
+}
+
+.main-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(36px, 6vw, 68px); /* 支援手機與電腦自動縮放 */
+    letter-spacing: 10px;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    font-weight: normal;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    font-size: 14px;
+    margin-bottom: 48px;
+}
+
+.subtitle .divider {
+    margin: 0 10px;
+    opacity: 0.3;
+}
+
+/* 入口按鈕 */
+.btn-enter {
+    display: inline-block;
+    padding: 14px 36px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+}
+
+.btn-enter:hover {
+    border-color: var(--accent-glow);
+    background-color: rgba(56, 189, 248, 0.08);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn-enter .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-enter:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* 底部版權 */
+.footer {
+    padding: 24px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+/* 手機版微調 */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 20px;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .nav-links {
+        gap: 20px;
+    }
+    .subtitle .divider {
+        display: none;
+    }
+    .subtitle {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+/* =========================================
+   作品集頁面 (WORKS) 專屬樣式
+   ========================================= */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    flex: 1;
+}
+
+.page-header {
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 24px;
+}
+
+.page-title {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    letter-spacing: 6px;
+    font-weight: normal;
+    color: var(--text-main);
+}
+
+.page-title .zh-title {
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-left: 12px;
+}
+
+/* 網格佈局 */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+}
+
+/* 作品檔案卡片 */
+.work-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 28px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.work-card:hover {
+    border-color: var(--accent-glow);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.file-code {
+    color: var(--accent-glow);
+}
+
+.status-badge {
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 3px 8px;
+    font-size: 10px;
+}
+
+.work-title {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.work-en-title {
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.work-summary {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #b0b3c0;
+    margin-bottom: 24px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    gap: 12px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 3px 8px;
+    letter-spacing: 1px;
+}
+
+.update-date {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    opacity: 0.6;
+    white-space: nowrap;
+}
+
+.loading-text, .error-box {
+    font-family: monospace;
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+    padding: 40px;
+    text-align: center;
+    border: 1px dashed var(--border-color);
+}
+/* =========================================
+   小說內頁與目錄樣式
+   ========================================= */
+
+.novel-header {
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 32px;
+}
+
+.novel-title {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.novel-en-title {
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--accent-glow);
+    margin-bottom: 20px;
+}
+
+.novel-summary {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #b0b3c0;
+    max-width: 800px;
+}
+
+.section-heading {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.section-heading .zh {
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-left: 8px;
+}
+
+.chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chapter-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 18px 24px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.2s ease;
+}
+
+.chapter-item:hover {
+    border-color: var(--accent-glow);
+    background-color: rgba(56, 189, 248, 0.03);
+    padding-left: 28px; /* 微微向右滑動的互動感 */
+}
+
+.ch-num {
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--accent-glow);
+    width: 120px;
+}
+
+.ch-title {
+    flex: 1;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.ch-action {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    transition: color 0.2s;
+}
+
+.chapter-item:hover .ch-action {
+    color: var(--accent-glow);
+}
+/* =========================================
+   閱讀器頁面 (READER) 專屬樣式
+   ========================================= */
+
+.reader-container {
+    width: 100%;
+    max-width: 760px; /* 限制內文寬度，避免行距過長傷眼 */
+    margin: 0 auto;
+    padding: 60px 24px 100px 24px;
+    flex: 1;
+}
+
+/* Markdown 內文排版美化 */
+.markdown-body {
+    font-size: 16px;
+    line-height: 2.2; /* 舒適的行高 */
+    color: #d1d5db;
+    letter-spacing: 0.05em;
+}
+
+.markdown-body h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: normal;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    letter-spacing: 2px;
+}
+
+.markdown-body h2, 
+.markdown-body h3 {
+    font-family: Georgia, serif;
+    color: var(--text-main);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.markdown-body p {
+    margin-bottom: 24px;
+    text-align: justify; /* 左右對齊讓小說排版更整齊 */
+}
+
+.markdown-body blockquote {
+    border-left: 2px solid var(--accent-glow);
+    margin: 24px 0;
+    padding-left: 16px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* 上下章切換按鈕區 */
+.reader-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-btn {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 12px 24px;
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    border-color: var(--accent-glow);
+    background-color: rgba(56, 189, 248, 0.05);
+}
