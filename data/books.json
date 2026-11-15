@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "id": "deep-dive",
+    "code": "FILE // 001",
+    "title": "深潛",
+    "enTitle": "DEEP DIVE",
+    "status": "連載中 ONGOING",
+    "tags": [
+      "認知恐怖",
+      "異常/詭異"
+    ],
+    "summary": "意外看見「深層」的少年，試圖存活的故事。",
+    "updatedAt": "2026.11.15"
+  },
+  {
+    "id": "magicless",
+    "code": "FILE // 002",
+    "title": "無魔",
+    "enTitle": "MAGICLESS",
+    "status": "企劃中 PLANNING",
+    "tags": [
+      "現代奇幻",
+      "輕鬆(?)"
+    ],
+    "summary": "「你」是一個特別的存在。沒人知道「你」代表什麼。當然，我知道。",
+    "updatedAt": "2026.11.15"
+  }
+]
