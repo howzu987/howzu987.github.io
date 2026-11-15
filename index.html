@@ -19,14 +19,45 @@
         </nav>
     </header>
 
-    <!-- 首頁主體（置中極簡文字） -->
-    <main class="container" style="min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px;">
-        <h1 style="font-size: 32px; font-weight: normal; letter-spacing: 3px; color: var(--text-main); margin-bottom: 16px;">
-            想不到吧 沒東西喔
-        </h1>
-        <p style="font-size: 13px; letter-spacing: 2px; color: var(--text-muted, #666); font-family: monospace;">
-            // NOTHING HERE. CHECK [WORKS] INSTEAD.
-        </p>
+    <main class="container">
+
+        <!-- 主視覺 + 隨機抽一篇 -->
+        <section class="home-hero">
+            <div class="system-tag">SYSTEM ONLINE // WELCOME</div>
+            <h1 class="main-title">ARCHIVE // 00</h1>
+            <p class="subtitle">隨心落筆，創造一個屬於我的世界</p>
+            <div class="hero-actions">
+                <a href="works.html" class="btn-enter">ENTER WORKS <span class="arrow">→</span></a>
+                <button id="random-btn" class="btn-enter" type="button" disabled>RANDOM FILE <span class="arrow">⟳</span></button>
+            </div>
+        </section>
+
+        <!-- 繼續閱讀（有閱讀紀錄才會顯示） -->
+        <section id="continue-section" class="home-section" hidden>
+            <h2 class="section-heading">CONTINUE <span class="zh">繼續閱讀</span></h2>
+            <a id="continue-link" href="#" class="chapter-item">
+                <span class="ch-num" id="continue-num"></span>
+                <span class="ch-title" id="continue-title"></span>
+                <span class="ch-action">RESUME →</span>
+            </a>
+        </section>
+
+        <!-- 最新更新 -->
+        <section class="home-section">
+            <h2 class="section-heading">LATEST <span class="zh">最新更新</span></h2>
+            <div id="latest-grid" class="works-grid">
+                <p class="loading-text">LOADING...</p>
+            </div>
+        </section>
+
+        <!-- 系統公告 -->
+        <section class="home-section">
+            <h2 class="section-heading">SYSTEM LOG <span class="zh">系統公告</span></h2>
+            <ul id="log-list" class="log-list">
+                <li class="log-empty">LOADING...</li>
+            </ul>
+        </section>
+
     </main>
 
     <!-- 底部極簡資訊 -->
@@ -34,6 +65,6 @@
         <p>© 2026 MY ARCHIVE. ALL RIGHTS RESERVED.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>

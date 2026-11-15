@@ -510,3 +510,138 @@ body {
     box-sizing: border-box;
     overflow: hidden; /* 防止內部元素溢出卡片外 */
 }
+
+/* =========================================
+   閱讀器：自動換行與邊界修正
+   ========================================= */
+
+.reader-container {
+    min-width: 0;                 /* 避免 flex 子元素被內容撐開、無法縮小 */
+    overflow-wrap: anywhere;
+}
+
+.markdown-body {
+    white-space: normal;          /* 內文一律正常換行 */
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* 保險：就算內容被誤判成程式碼區塊，也要自動換行、不超出邊界 */
+.markdown-body pre,
+.markdown-body code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+    font-family: inherit;
+    background: none;
+    padding: 0;
+}
+
+/* 場景分隔線 */
+.markdown-body hr {
+    border: none;
+    text-align: center;
+    margin: 40px 0;
+    color: var(--text-muted);
+}
+.markdown-body hr::before {
+    content: "◆ ◆ ◆";
+    font-size: 10px;
+    letter-spacing: 8px;
+    opacity: 0.5;
+}
+
+/* 手機版：縮小左右留白 */
+@media (max-width: 600px) {
+    .reader-container {
+        padding: 40px 18px 80px 18px;
+    }
+    .markdown-body {
+        font-size: 15px;
+        line-height: 2;
+        letter-spacing: 0.03em;
+    }
+}
+
+/* =========================================
+   首頁 (HOME) 專屬樣式
+   ========================================= */
+
+[hidden] {
+    display: none !important;
+}
+
+.home-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 0 72px 0;
+}
+
+.home-hero .subtitle {
+    margin-bottom: 36px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+button.btn-enter {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button.btn-enter:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.home-section {
+    margin-bottom: 56px;
+}
+
+/* 系統公告（終端機日誌風格） */
+.log-list {
+    list-style: none;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    padding: 20px 24px;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 2;
+    color: var(--text-muted);
+}
+
+.log-date {
+    color: var(--accent-glow);
+    margin-right: 8px;
+}
+
+.log-text a {
+    color: var(--text-main);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.log-text a:hover {
+    color: var(--accent-glow);
+    border-bottom-color: var(--accent-glow);
+}
+
+.log-empty {
+    opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+    .home-hero {
+        padding-bottom: 48px;
+    }
+    .main-title {
+        letter-spacing: 4px;
+    }
+}

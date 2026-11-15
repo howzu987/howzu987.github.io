@@ -11,39 +11,46 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // 設定「返回目錄」的連結
     backLink.href = `novel.html?id=${novelId}`;
-
-    // 載入章節 Markdown 檔案與小說資訊（用來做上下章切換）
     loadChapter(novelId, chNum);
 });
+
+// 小說排版預處理：
+// 1. 去掉每行開頭的空白（避免 4 格縮排被 Markdown 當成程式碼區塊）
+// 2. 每一行視為一個段落（單一換行也會分段）
+// 3. 單獨一行的「...」當成場景分隔線
+function prepareNovelText(raw) {
+    return raw
+        .replace(/\r\n/g, "\n")
+        .split("\n")
+        .map(line => line.trim())
+        .filter(line => line !== "")
+        .map(line => (line === "..." ? "* * *" : line))
+        .join("\n\n");
+}
 
 async function loadChapter(novelId, chNum) {
     const contentContainer = document.getElementById("chapter-content");
 
     try {
-        // 1. 讀取該章節的 .md 檔案
         const mdResponse = await fetch(`novels/${novelId}/chapters/${chNum}.md`);
         if (!mdResponse.ok) {
             throw new Error("找不到指定的章節檔案");
         }
         const markdownText = await mdResponse.text();
 
-        // 2. 使用 Marked.js 將 Markdown 轉為 HTML
-        contentContainer.innerHTML = marked.parse(markdownText);
+        contentContainer.innerHTML = marked.parse(prepareNovelText(markdownText));
 
-        // 3. 同步讀取 info.json 來設定網頁標題與上下章按鈕
         const infoResponse = await fetch(`novels/${novelId}/info.json`);
         if (infoResponse.ok) {
             const novelData = await infoResponse.json();
-            
-            // 找出當前章節在陣列中的位置
             const chapters = novelData.chapters;
-            const currentIndex = chapters.findIndex(ch => ch.num === chNum);
-            
+            const currentIndex = chapters.findIndex(ch => String(ch.num) === String(chNum));
+
             if (currentIndex !== -1) {
                 document.title = `${chapters[currentIndex].title} | ${novelData.title} | MY ARCHIVE`;
                 setupReaderNavigation(novelId, chapters, currentIndex);
+                saveReadingProgress(novelId, novelData.title, chapters[currentIndex]);
             }
         }
 
@@ -60,7 +67,6 @@ async function loadChapter(novelId, chNum) {
     }
 }
 
-// 設定上下章切換邏輯
 function setupReaderNavigation(novelId, chapters, currentIndex) {
     const navBar = document.getElementById("reader-nav");
     const prevBtn = document.getElementById("prev-btn");
@@ -68,7 +74,6 @@ function setupReaderNavigation(novelId, chapters, currentIndex) {
 
     navBar.style.display = "flex";
 
-    // 上一章
     if (currentIndex > 0) {
         prevBtn.style.visibility = "visible";
         prevBtn.onclick = () => {
@@ -78,7 +83,6 @@ function setupReaderNavigation(novelId, chapters, currentIndex) {
         prevBtn.style.visibility = "hidden";
     }
 
-    // 下一章
     if (currentIndex < chapters.length - 1) {
         nextBtn.style.visibility = "visible";
         nextBtn.onclick = () => {
@@ -86,5 +90,21 @@ function setupReaderNavigation(novelId, chapters, currentIndex) {
         };
     } else {
         nextBtn.style.visibility = "hidden";
+    }
+}
+
+
+// 記錄最後閱讀的章節（首頁「繼續閱讀」使用，只存在讀者自己的瀏覽器）
+function saveReadingProgress(novelId, novelTitle, chapter) {
+    try {
+        localStorage.setItem("archive:lastRead", JSON.stringify({
+            id: novelId,
+            ch: chapter.num,
+            novelTitle: novelTitle,
+            chTitle: chapter.title,
+            time: Date.now()
+        }));
+    } catch (e) {
+        // 無法儲存時略過
     }
 }

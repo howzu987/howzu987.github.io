@@ -23,7 +23,7 @@
     "id": "test",
     "code": "FILE // test",
     "title": "測試",
-    "enTitle": "MAGICLESS",
+    "enTitle": "TEST",
     "status": "測試中 TESTING",
     "tags": ["test", "test", "test"],
     "summary": "test",
