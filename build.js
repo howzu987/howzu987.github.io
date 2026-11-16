@@ -59,10 +59,19 @@ function build() {
 
     for (const id of ids) {
         const dir = path.join(NOVELS, id);
-        const meta = readJSON(path.join(dir, "meta.json"), null);
-        if (!meta) {
+        const metaPath = path.join(dir, "meta.json");
+        if (!fs.existsSync(metaPath)) {
             console.warn(`略過 ${id}：找不到 meta.json`);
             continue;
+        }
+        let meta;
+        try {
+            meta = JSON.parse(fs.readFileSync(metaPath, "utf8").replace(/^\uFEFF/, ""));
+        } catch (e) {
+            // 格式錯誤時直接中止：不會覆蓋任何現有資料，Actions 會顯示紅色叉叉
+            console.error(`✖ novels/${id}/meta.json 格式錯誤：${e.message}`);
+            console.error(`  常見原因：使用了中文引號 “ ” 、缺少逗號，或多了結尾逗號。請全部改成半形 " 。`);
+            process.exit(1);
         }
 
         const oldInfo = readJSON(path.join(dir, "info.json"), null);
