@@ -796,3 +796,24 @@ button.btn-enter:disabled {
         gap: 4px;
     }
 }
+
+/* 系統公告：展開 / 收合按鈕 */
+.log-toggle {
+    display: block;
+    width: 100%;
+    margin-top: -1px;
+    padding: 10px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.log-toggle:hover {
+    color: var(--accent-glow);
+    border-color: var(--accent-glow);
+}

@@ -1,5 +1,8 @@
 let allBooks = [];
 
+// 系統公告預設顯示幾則（其餘可按「展開」查看）
+const LOG_VISIBLE = 4;
+
 document.addEventListener("DOMContentLoaded", () => {
     renderContinueReading();
     loadLatest();
@@ -104,18 +107,46 @@ async function loadAnnouncements() {
             return;
         }
 
-        list.innerHTML = logs
-            .sort((a, b) => toTime(b.date) - toTime(a.date))
-            .slice(0, 5)
-            .map(log => {
+        const sorted = [...logs].sort((a, b) => toTime(b.date) - toTime(a.date));
+
+        // 預設只顯示最新 LOG_VISIBLE 則，其餘先收起來，按鈕可展開
+        list.innerHTML = sorted
+            .map((log, i) => {
                 const text = log.link
                     ? `<a href="${log.link}">${log.text}</a>`
                     : log.text;
-                return `<li><span class="log-date">[${log.date}]</span> <span class="log-text">${text}</span></li>`;
+                const extra = i >= LOG_VISIBLE ? ' class="log-extra" hidden' : "";
+                return `<li${extra}><span class="log-date">[${log.date}]</span> <span class="log-text">${text}</span></li>`;
             })
             .join("");
+
+        if (sorted.length > LOG_VISIBLE) {
+            setupLogToggle(list, sorted.length);
+        }
     } catch (error) {
         console.error(error);
         list.innerHTML = `<li class="log-empty">// LOG UNAVAILABLE</li>`;
     }
+}
+
+function setupLogToggle(list, total) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "log-toggle";
+    let open = false;
+
+    const render = () => {
+        btn.textContent = open
+            ? "▲ 收合 COLLAPSE"
+            : `▼ 展開全部 SHOW ALL (${total})`;
+    };
+
+    btn.addEventListener("click", () => {
+        open = !open;
+        list.querySelectorAll(".log-extra").forEach(li => { li.hidden = !open; });
+        render();
+    });
+
+    render();
+    list.insertAdjacentElement("afterend", btn);
 }
