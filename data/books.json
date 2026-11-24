@@ -1,29 +1,35 @@
 [
   {
     "id": "deep-dive",
+    "type": "novel",
     "code": "FILE // 001",
+    "status": "連載中 ONGOING",
     "title": "深潛",
     "enTitle": "DEEP DIVE",
-    "status": "連載中 ONGOING",
     "tags": [
       "認知恐怖",
       "異常/詭異",
       "無大綱寫作"
     ],
     "summary": "意外看見「深層」的少年，試圖在無序世界存活的故事。",
-    "updatedAt": "2026.11.23"
+    "updatedAt": "2026.11.23",
+    "wordCount": 9762,
+    "firstChapter": "001"
   },
   {
     "id": "magicless",
+    "type": "novel",
     "code": "FILE // 002",
+    "status": "企劃中 PLANNING",
     "title": "無魔",
     "enTitle": "MAGICLESS",
-    "status": "企劃中 PLANNING",
     "tags": [
       "現代奇幻",
       "輕鬆(?)"
     ],
     "summary": "「你」是一個特別的存在。沒人知道「你」代表什麼。當然，我知道。",
-    "updatedAt": "2026.11.15"
+    "updatedAt": "2026.11.15",
+    "wordCount": 0,
+    "firstChapter": "001"
   }
 ]
