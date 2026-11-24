@@ -1,0 +1,20 @@
+{
+  "id": "Dreamer",
+  "type": "short",
+  "title": "夢者",
+  "enTitle": "",
+  "author": "",
+  "summary": "來自記憶、夢境與幻想的樂章",
+  "chapters": [
+    {
+      "num": "001",
+      "title": "夢境",
+      "date": "2026.11.24"
+    },
+    {
+      "num": "002",
+      "title": "夢者",
+      "date": "2026.11.24"
+    }
+  ]
+}
