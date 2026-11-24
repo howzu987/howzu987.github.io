@@ -817,3 +817,70 @@ button.btn-enter:disabled {
     color: var(--accent-glow);
     border-color: var(--accent-glow);
 }
+
+/* =========================================
+   作品類型：篩選分頁 與 短篇 / 散文卡片
+   ========================================= */
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.filter-btn {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 8px 16px;
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn .zh {
+    font-family: "Noto Sans TC", sans-serif;
+    margin-left: 2px;
+    opacity: 0.7;
+}
+
+.filter-btn .count {
+    margin-left: 6px;
+    opacity: 0.5;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    color: var(--text-main);
+    border-color: var(--accent-glow);
+    background-color: rgba(56, 189, 248, 0.06);
+}
+
+/* 短篇 / 散文的類型標籤（取代檔案編號） */
+.type-label {
+    letter-spacing: 2px;
+}
+
+.type-label.type-short {
+    color: var(--accent-glow);
+}
+
+.type-label.type-essay {
+    color: #a78bfa;
+}
+
+.work-card.type-short {
+    border-top: 2px solid rgba(56, 189, 248, 0.55);
+}
+
+.work-card.type-essay {
+    border-top: 2px solid rgba(167, 139, 250, 0.55);
+}
+
+.work-card.type-essay:hover {
+    border-color: #a78bfa;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(167, 139, 250, 0.12);
+}

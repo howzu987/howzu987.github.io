@@ -1,11 +1,19 @@
+const FILTERS = ["all", "novel", "essay", "short"];
+let works = [];
+
 document.addEventListener("DOMContentLoaded", () => {
     const worksGrid = document.getElementById("works-grid");
-    
     // 確保只在有 works-grid 的頁面執行
     if (worksGrid) {
         loadWorks(worksGrid);
     }
 });
+
+// 從網址 # 取得目前的篩選（例如 works.html#essay）
+function currentFilter() {
+    const h = window.location.hash.replace("#", "");
+    return FILTERS.includes(h) ? h : "all";
+}
 
 async function loadWorks(container) {
     try {
@@ -13,40 +21,12 @@ async function loadWorks(container) {
         if (!response.ok) {
             throw new Error("無法讀取檔案庫資料");
         }
-        const books = await response.json();
-        
-        // 清空載入提示
-        container.innerHTML = "";
+        works = await response.json();
 
-        books.forEach(book => {
-            // 組合標籤 HTML
-            const tagsHTML = book.tags
-                .map(tag => `<span class="tag">${tag}</span>`)
-                .join("");
+        setupFilters(container);
+        renderWorks(container);
 
-            // 建立卡片連結（導向獨立小說頁面，並帶上作品 ID 參數）
-            const card = document.createElement("a");
-            card.href = `novel.html?id=${book.id}`;
-            card.className = "work-card";
-
-            card.innerHTML = `
-                <div class="card-header">
-                    <span class="file-code">${book.code}</span>
-                    <span class="status-badge">${book.status}</span>
-                </div>
-                <div class="card-body">
-                    <h2 class="work-title">${book.title}</h2>
-                    <div class="work-en-title">${book.enTitle}</div>
-                    <p class="work-summary">${book.summary}</p>
-                </div>
-                <div class="card-footer">
-                    <div class="tags">${tagsHTML}</div>
-                    <div class="update-date">UPD: ${book.updatedAt}</div>
-                </div>
-            `;
-
-            container.appendChild(card);
-        });
+        window.addEventListener("hashchange", () => renderWorks(container));
 
     } catch (error) {
         console.error(error);
@@ -59,4 +39,42 @@ async function loadWorks(container) {
             </div>
         `;
     }
+}
+
+function setupFilters() {
+    const bar = document.getElementById("filter-bar");
+    if (!bar) return;
+
+    bar.querySelectorAll(".filter-btn").forEach(btn => {
+        const f = btn.dataset.filter;
+        const count = f === "all"
+            ? works.length
+            : works.filter(b => getBookType(b) === f).length;
+        const countEl = btn.querySelector(".count");
+        if (countEl) countEl.textContent = count;
+
+        btn.addEventListener("click", () => {
+            window.location.hash = f;
+        });
+    });
+}
+
+function renderWorks(container) {
+    const filter = currentFilter();
+
+    // 標示目前選到的分頁
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.filter === filter);
+    });
+
+    const list = filter === "all"
+        ? works
+        : works.filter(b => getBookType(b) === filter);
+
+    container.innerHTML = "";
+    if (list.length === 0) {
+        container.innerHTML = `<p class="loading-text">// NO FILES</p>`;
+        return;
+    }
+    list.forEach(book => container.appendChild(buildWorkCard(book)));
 }

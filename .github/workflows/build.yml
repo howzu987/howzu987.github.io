@@ -4,7 +4,11 @@
   "push": {
    "paths": [
     "novels/**/chapters/**",
-    "novels/**/meta.json"
+    "novels/**/meta.json",
+    "essays/**/chapters/**",
+    "essays/**/meta.json",
+    "shorts/**/chapters/**",
+    "shorts/**/meta.json"
    ]
   },
   "workflow_dispatch": {}

@@ -1,7 +1,9 @@
 let allBooks = [];
 
 // 系統公告預設顯示幾則（其餘可按「展開」查看）
-const LOG_VISIBLE = 4;
+const LOG_VISIBLE = 3;
+
+const CATEGORY_LABELS = { novel: "長篇", short: "短篇", essay: "散文" };
 
 document.addEventListener("DOMContentLoaded", () => {
     renderContinueReading();
@@ -27,7 +29,7 @@ function renderContinueReading() {
         if (!last.id || !last.ch) return;
 
         document.getElementById("continue-link").href =
-            `reader.html?id=${encodeURIComponent(last.id)}&ch=${encodeURIComponent(last.ch)}`;
+            `reader.html?id=${encodeURIComponent(last.id)}&ch=${encodeURIComponent(last.ch)}${typeParam(last.type)}`;
         document.getElementById("continue-num").textContent = last.novelTitle || last.id;
         document.getElementById("continue-title").textContent = last.chTitle || `CHAPTER ${last.ch}`;
         document.getElementById("continue-section").hidden = false;
@@ -56,31 +58,7 @@ async function loadLatest() {
             .slice(0, 3);
 
         grid.innerHTML = "";
-        latest.forEach(book => {
-            const tagsHTML = (book.tags || [])
-                .map(tag => `<span class="tag">${tag}</span>`)
-                .join("");
-
-            const card = document.createElement("a");
-            card.href = `novel.html?id=${book.id}`;
-            card.className = "work-card";
-            card.innerHTML = `
-                <div class="card-header">
-                    <span class="file-code">${book.code}</span>
-                    <span class="status-badge">${book.status}</span>
-                </div>
-                <div class="card-body">
-                    <h2 class="work-title">${book.title}</h2>
-                    <div class="work-en-title">${book.enTitle}</div>
-                    <p class="work-summary">${book.summary}</p>
-                </div>
-                <div class="card-footer">
-                    <div class="tags">${tagsHTML}</div>
-                    <div class="update-date">UPD: ${book.updatedAt}</div>
-                </div>
-            `;
-            grid.appendChild(card);
-        });
+        latest.forEach(book => grid.appendChild(buildWorkCard(book)));
     } catch (error) {
         console.error(error);
         grid.innerHTML = `<div class="error-box"><p>SYSTEM ERROR: 無法載入作品資料。</p></div>`;
@@ -90,7 +68,7 @@ async function loadLatest() {
 function goRandom() {
     if (allBooks.length === 0) return;
     const pick = allBooks[Math.floor(Math.random() * allBooks.length)];
-    window.location.href = `novel.html?id=${pick.id}`;
+    window.location.href = getBookLink(pick);
 }
 
 /* ---------- 系統公告 ---------- */

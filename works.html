@@ -27,7 +27,15 @@
             <h1 class="page-title">WORKS <span class="zh-title">作品檔案</span></h1>
         </div>
 
-        <!-- 小說卡片將由 script.js 動態生成於此 -->
+        <!-- 類型篩選 -->
+        <div id="filter-bar" class="filter-bar">
+            <button type="button" class="filter-btn" data-filter="all">ALL <span class="zh">全部</span> <span class="count"></span></button>
+            <button type="button" class="filter-btn" data-filter="novel">NOVEL <span class="zh">小說</span> <span class="count"></span></button>
+            <button type="button" class="filter-btn" data-filter="essay">ESSAY <span class="zh">散文</span> <span class="count"></span></button>
+            <button type="button" class="filter-btn" data-filter="short">SHORT <span class="zh">短篇</span> <span class="count"></span></button>
+        </div>
+
+        <!-- 作品卡片將由 script.js 動態生成於此 -->
         <div id="works-grid" class="works-grid">
             <p class="loading-text">LOADING ARCHIVE DATA...</p>
         </div>
@@ -38,6 +46,7 @@
         <p>© 2026 MY ARCHIVE. ALL RIGHTS RESERVED.</p>
     </footer>
 
+    <script src="card.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@ async function loadStats() {
         // 章節總數：逐本讀取 info.json 後加總
         const infos = await Promise.all(
             books.map(b =>
-                fetch(`novels/${b.id}/info.json`)
+                fetch(`${getWorkDir(getBookType(b))}/${b.id}/info.json`)
                     .then(r => (r.ok ? r.json() : null))
                     .catch(() => null)
             )
