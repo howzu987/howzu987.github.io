@@ -31,5 +31,18 @@
     "updatedAt": "2026.11.15",
     "wordCount": 0,
     "firstChapter": "001"
+  },
+  {
+    "id": "The-Sound-of-the-Sea",
+    "type": "essay",
+    "title": "聽海",
+    "enTitle": "",
+    "tags": [
+      "旅行"
+    ],
+    "summary": "一篇來自畢業旅行的我寫下的故事。",
+    "updatedAt": "2026.11.24",
+    "wordCount": 1159,
+    "firstChapter": "001"
   }
 ]
